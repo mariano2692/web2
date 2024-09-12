@@ -1,9 +1,12 @@
-Ejemplo Lista de Juegos
+# Lista de Juegos
 
-Integrantes:
-mariano alberto menendez
-teo ivan blas garcia
+## Integrantes:
+* mariano alberto menendez
+* teo ivan blas garcia
 
 
-Descripción:
+## Descripción:
 sistema para que los usuarios puedan ver un listado de los distintos juegos desarrolados por diferentes companias.
+
+## DER
+![Diagrama Entidad Relacion](/db_juegos.png)
