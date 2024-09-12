@@ -1,9 +1,9 @@
-Ejemplo Lista de Juegos
+**Ejemplo Lista de Juegos
 
-Integrantes:
+**Integrantes:
 mariano alberto menendez
 teo ivan blas garcia
 
 
-Descripción:
+D**escripción:
 sistema para que los usuarios puedan ver un listado de los distintos juegos desarrolados por diferentes companias.
