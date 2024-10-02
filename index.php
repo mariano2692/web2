@@ -1,5 +1,5 @@
 <?php
-
+    require_once 'templates/header.php';
     //CONEXION BASE DE DATOS
     $db = new PDO('mysql:host=localhost;'.'dbname=db_juegos;charset=utf8', 'root', '');
 
