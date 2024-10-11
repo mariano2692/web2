@@ -11,8 +11,46 @@ require_once './app/view/games.view.php';
             $this->view = new gamesView();
         }
 
+        public function listCompanies(){
+            $comp = $this->model->getCompanies();
+            $this->view->showCompanies($comp);
+        }
+
         public function listGames(){
             $games = $this->model->getGames();
             $this->view->showGames($games);
+        }
+
+        public function listGame($id){
+            $game = $this->model->getGame($id);
+            $this->view->showGame($game);
+        }
+
+        public function addGame(){
+            if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
+                return;
+            }
+            if (!isset($_POST['fecha']) || empty($_POST['fecha'])) {
+                return;
+            }
+            if (!isset($_POST['modalidad']) || empty($_POST['modalidad'])) {
+                return;
+            }
+            if (!isset($_POST['plataforma']) || empty($_POST['plataforma'])) {
+                return;
+            }
+            if (!isset($_POST['compania']) || empty($_POST['compania'])) {
+                return;
+            }
+
+            $nombre = $_POST['nombre'];
+            $fecha = $_POST['fecha'];
+            $modalidad = $_POST['modalidad'];
+            $plataforma = $_POST['plataforma'];
+            $compania = $_POST['compania'];
+
+            $this->model->addGame($nombre,$fecha,$modalidad,$plataforma,$compania);
+            header('Location: ' . BASE_URL);
+
         }
     }

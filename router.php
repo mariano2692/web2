@@ -13,6 +13,15 @@
         case 'list':
             $controller = new gamesController();
             $controller->listGames();
+            $controller->listCompanies();
+            break;
+        case 'game':
+            $controller = new gamesController();
+            $controller->listGame($params[1]);
+            break;
+        case 'add':
+            $controller = new gamesController();
+            $controller->addGame();
             break;
         default:
         echo 'no existe';
