@@ -1,6 +1,7 @@
 <?php
     class gamesView {
         public function showGames($games){
+            require_once './templates/header.php';
             ?>
             <div class="container">
 
@@ -42,7 +43,7 @@
     </div>
 <?php
         }
-        public function showCompanies($comp,$game=null){
+        public function showForm($comp,$game=null){
             require_once './templates/form_add_games.php';
         }
     }

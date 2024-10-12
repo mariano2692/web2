@@ -13,7 +13,7 @@ require_once './app/view/games.view.php';
 
         public function listCompanies(){
             $comp = $this->model->getCompanies();
-            $this->view->showCompanies($comp);
+            $this->view->showForm($comp);
         }
 
         public function listGames(){
@@ -50,19 +50,18 @@ require_once './app/view/games.view.php';
             $compania = $_POST['compania'];
 
             $this->model->addGame($nombre,$fecha,$modalidad,$plataforma,$compania,$id);
-            header('Location: ' . BASE_URL);
-            
         }
 
         public function deleteGame($id){
             $this->model->deleteGame($id);
+            header('Location: ' . BASE_URL);
            
         }
 
         public function getData($id){
             $game = $this->model->getGame($id);
             $comp = $this->model->getCompanies();
-            $this->view->showCompanies($comp,$game);
+            $this->view->showForm($comp,$game); //le pasa el juego a modificar y la lista de companias
             // header('Location: ' . BASE_URL);
         }
     }
