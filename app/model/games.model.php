@@ -22,9 +22,25 @@
             return $juego;
         }
 
-        public function addGame($nombre,$fecha,$modalidad,$plataforma,$compania){
-            $query = $this->db->prepare('INSERT INTO juegos(nombre,fecha_lanzamiento,modalidad,plataformas,id_compania) VALUES(?,?,?,?,?)');
-            $query->execute(array($nombre,$fecha,$modalidad,$plataforma,$compania));
+        public function addGame($nombre,$fecha,$modalidad,$plataforma,$compania,$id){
+            try {
+                if ($id == 0) {
+                    $query = $this->db->prepare('INSERT INTO juegos(nombre, fecha_lanzamiento, modalidad, plataformas, id_compania) VALUES(?, ?, ?, ?, ?)');
+                    $query->execute(array($nombre, $fecha, $modalidad, $plataforma, $compania));
+                } else {
+                    $query = $this->db->prepare("UPDATE juegos SET nombre = ?, fecha_lanzamiento = ?, modalidad = ?, plataformas = ?, id_compania = ? WHERE id_juegos = ?");
+                    $query->execute(array($nombre, $fecha, $modalidad, $plataforma, $compania, $id));
+                }
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage(); // Muestra el mensaje de error
+            }
+            
+            
+        }
+
+        public function deleteGame($id){
+            $query = $this->db->prepare('DELETE FROM juegos WHERE id_juegos = ?');
+            $query->execute(array($id));
         }
 
         public function getCompanies(){

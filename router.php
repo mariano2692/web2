@@ -23,6 +23,13 @@
             $controller = new gamesController();
             $controller->addGame();
             break;
+        case 'delete':
+            $controller = new gamesController();
+            $controller->deleteGame($params[1]);
+        case 'update':
+            $controller = new gamesController();
+            $controller->getData($params[1]);
+            break;
         default:
         echo 'no existe';
         break;

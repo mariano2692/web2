@@ -42,15 +42,27 @@ require_once './app/view/games.view.php';
             if (!isset($_POST['compania']) || empty($_POST['compania'])) {
                 return;
             }
-
+            $id = $_POST['id'];
             $nombre = $_POST['nombre'];
             $fecha = $_POST['fecha'];
             $modalidad = $_POST['modalidad'];
             $plataforma = $_POST['plataforma'];
             $compania = $_POST['compania'];
 
-            $this->model->addGame($nombre,$fecha,$modalidad,$plataforma,$compania);
+            $this->model->addGame($nombre,$fecha,$modalidad,$plataforma,$compania,$id);
             header('Location: ' . BASE_URL);
+            
+        }
 
+        public function deleteGame($id){
+            $this->model->deleteGame($id);
+           
+        }
+
+        public function getData($id){
+            $game = $this->model->getGame($id);
+            $comp = $this->model->getCompanies();
+            $this->view->showCompanies($comp,$game);
+            // header('Location: ' . BASE_URL);
         }
     }
