@@ -1,5 +1,13 @@
 <?php
     class gamesView {
+        public $user = null;
+
+        public function __construct($user)
+        {
+            $this->user = $user;
+        }
+
+
         public function showGames($games){
             require_once './templates/header.php';
             ?>
@@ -45,5 +53,10 @@
         }
         public function showForm($comp,$game=null){
             require_once './templates/form_add_games.php';
+        }
+
+
+        public function showError($error){
+            require_once './templates/error.php';
         }
     }

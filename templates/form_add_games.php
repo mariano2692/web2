@@ -13,7 +13,7 @@
 
 <form action="add" method="POST" class="my-4">
     <div class="row">
-                <input required name="id" type="number" class="form-control" value="<?php echo isset($game->id_juegos) ? $game->id_juegos : 0; ?>">
+                <input required name="id" type="number" class="form-control" hidden value="<?php echo isset($game->id_juegos) ? $game->id_juegos : 0; ?>">
         <div class="col-9">
             <div class="form-group">
                 <label>Título</label>

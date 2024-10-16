@@ -13,25 +13,26 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="">Juegos</a>
+              <?php if($this->user):?>
+                <span class="navbar-text"><?php echo $this->user->user ?></span>
+              <?php endif?>
+              
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="home">listado</a>
+                    <a class="nav-link" aria-current="page" href="list">listado de juegos</a>
                   </li>
+                  <?php if($this->user): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout">logout</a>
+                            </li>
+                        <?php endif; ?>
+
                 </ul>
               </div>
             </div>
           </nav>
     </header>
-
-    <!-- <header class="bg-primary text-white p-4">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h1 class="h3">Listado de Elementos</h1>
-                <button class="btn btn-light">Pedir Listado</button>
-            </div>
-        </div>
-    </header> -->

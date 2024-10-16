@@ -6,9 +6,9 @@ require_once './app/view/games.view.php';
         private $model;
         private $view;
 
-        public function __construct(){
+        public function __construct($res){
             $this->model = new gamesModel();
-            $this->view = new gamesView();
+            $this->view = new gamesView($res->user);
         }
 
         public function listCompanies(){
@@ -28,18 +28,23 @@ require_once './app/view/games.view.php';
 
         public function addGame(){
             if (!isset($_POST['nombre']) || empty($_POST['nombre'])) {
+                $this->view->showError("completar nombre");
                 return;
             }
             if (!isset($_POST['fecha']) || empty($_POST['fecha'])) {
+                $this->view->showError("completar fecha");
                 return;
             }
             if (!isset($_POST['modalidad']) || empty($_POST['modalidad'])) {
+                $this->view->showError("ingresar modalidad");
                 return;
             }
             if (!isset($_POST['plataforma']) || empty($_POST['plataforma'])) {
+                $this->view->showError("ingresar plataforma");
                 return;
             }
             if (!isset($_POST['compania']) || empty($_POST['compania'])) {
+                $this->view->showError("ingresar compania");
                 return;
             }
             $id = $_POST['id'];
@@ -50,6 +55,7 @@ require_once './app/view/games.view.php';
             $compania = $_POST['compania'];
 
             $this->model->addGame($nombre,$fecha,$modalidad,$plataforma,$compania,$id);
+            header('Location: ' . BASE_URL);
         }
 
         public function deleteGame($id){
@@ -62,6 +68,6 @@ require_once './app/view/games.view.php';
             $game = $this->model->getGame($id);
             $comp = $this->model->getCompanies();
             $this->view->showForm($comp,$game); //le pasa el juego a modificar y la lista de companias
-            // header('Location: ' . BASE_URL);
+            
         }
     }
