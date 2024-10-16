@@ -4,6 +4,8 @@
     require_once 'app/middlewares/verify.middleware.php';
     require_once 'app/controller/games.controller.php';
     require_once 'app/controller/auth.controller.php';
+
+    require_once 'app/controller/companies.controller.php';
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
     $res = new Response();
@@ -55,8 +57,32 @@
             $controller->showLogin();
             break;
         case 'logout':
-            $controller = new authController();
+             $controller = new authController();
             $controller->logout();
+            break;
+        case 'listCompanies':
+            sessionMiddleware($res);
+            verifyAuthMiddleware($res);
+            $controller = new companiesController($res);
+            $controller->listCompanies();
+            break;
+        case 'addCompany':
+            sessionMiddleware($res);
+            verifyAuthMiddleware($res);
+            $controller = new companiesController($res);
+            $controller->addCompany();
+            break;
+            case 'deleteCompany':
+            sessionMiddleware($res);
+            verifyAuthMiddleware($res);
+            $controller = new companiesController($res);
+            $controller->deleteCompany($params[1]);
+            break;
+        case 'editCompany':
+            sessionMiddleware($res);
+            verifyAuthMiddleware($res);
+            $controller = new companiesController($res);
+            $controller->editCompany();
             break;
         default:
         echo 'no existe';

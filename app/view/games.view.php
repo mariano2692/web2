@@ -33,6 +33,7 @@
   <?php
         }
         public function showGame($game){
+            require_once './templates/header.php';
     ?>
     <div class="card">
         <div class="card-header">
@@ -52,6 +53,7 @@
 <?php
         }
         public function showForm($comp,$game=null){
+            require_once './templates/header.php';
             require_once './templates/form_add_games.php';
         }
 

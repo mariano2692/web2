@@ -14,6 +14,7 @@ require_once './app/view/games.view.php';
         public function listCompanies(){
             $comp = $this->model->getCompanies();
             $this->view->showForm($comp);
+            header('Location: ' . BASE_URL);
         }
 
         public function listGames(){
