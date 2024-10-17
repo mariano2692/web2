@@ -1,9 +1,18 @@
 <?php
 
 class companiesView {
+
+    public $user = null;
+
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
     public function showCompanies($companias) {
+        require_once './templates/header.php';
         ?>
         <h1>Gestión de Compañías</h1>
+        <?php if($this->user && $this->user->rol == "administrador"): ?>
         <h2>Agregar Compañía</h2>
         <form method="POST" action="<?php echo BASE_URL; ?>addCompany">
             <label for="nombre_compania">Nombre de la Compañía:</label>
@@ -17,6 +26,8 @@ class companiesView {
             <input type="submit" name="agregar_compania" value="Agregar">
         </form>
 
+        <?php endif ?>
+
         <h2>Listado de Compañías</h2>
         <table border="1">
             <tr>
@@ -25,7 +36,9 @@ class companiesView {
                 <th>Fecha de Fundación</th>
                 <th>Oficinas Centrales</th>
                 <th>Sitio Web</th>
+                <?php if($this->user && $this->user->rol == "administrador"): ?>
                 <th>Acciones</th>
+                <?php endif ?>
             </tr>
             <?php foreach ($companias as $compania): ?>
                 <tr>
@@ -34,6 +47,7 @@ class companiesView {
                     <td><?php echo htmlspecialchars($compania->fecha_fundacion); ?></td>
                     <td><?php echo htmlspecialchars($compania->oficinas_centrales); ?></td>
                     <td><a href="https://<?php echo htmlspecialchars($compania->sitio_web); ?>"><?php echo htmlspecialchars($compania->sitio_web); ?></a></td>
+                    <?php if($this->user && $this->user->rol == "administrador"): ?>
                     <td>
         <form method="POST" action="<?php echo BASE_URL; ?>editCompany">
                 <input type="hidden" name="id_compania" value="<?php echo htmlspecialchars($compania->id_compania); ?>">
@@ -45,6 +59,7 @@ class companiesView {
         </form>
                         <a href="<?php echo BASE_URL; ?>deleteCompany/<?php echo htmlspecialchars($compania->id_compania); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta compañía?');">Eliminar</a>
                     </td>
+                    <?php endif ?>
                 </tr>
             <?php endforeach; ?>
         </table>
