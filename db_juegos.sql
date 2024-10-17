@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2024 a las 04:14:29
+-- Tiempo de generación: 17-10-2024 a las 17:22:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `compania` (
 --
 
 INSERT INTO `compania` (`id_compania`, `nombre`, `fecha_fundacion`, `oficinas_centrales`, `sitio_web`) VALUES
-(1, 'Riot Games', '2006-09-06', 'West Los Angeles, Los Ángeles, California, Estados Unidos', 'riotgames.com'),
+(1, 'Riot Games', '2006-09-06', 'Los Angeles, Los Ángeles, California, Estados Unidos', 'riotgames.com'),
 (2, 'Ubisoft Entertainment', '1984-03-28', 'Montreuil, Francia', 'ubisoft.com'),
 (3, 'Blizzard Entertainment\r\n', '1981-09-08', 'Irvine, California, Estados Unidos', 'blizzard.com');
 
@@ -64,15 +64,35 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`id_juegos`, `nombre`, `fecha_lanzamiento`, `modalidad`, `plataformas`, `id_compania`) VALUES
-(1, 'Diablo II Resurrected', '2021-08-13', 'Videojuego multijugador', 'Nintendo Switch, PlayStation 5, PlayStation 4, Microsoft Windows, Xbox One, GeForce Now, Xbox Series X|S', 3),
-(4, 'Warcraft III', '2002-07-03', 'Videojuego multijugador', 'Microsoft Windows, macOS, Mac OS Classic\r\n', 3),
 (5, 'Assassin\'s Creed IV: Black Flag', '2013-10-19', 'Videojuego multijugador', 'PlayStation 4, Nintendo Switch, PlayStation 3', 2),
 (6, 'Far Cry 4', '2014-11-17', 'Videojuego multijugador, Videojuego de un jugador', 'PlayStation 4, PlayStation 3, Xbox 360, Microsoft Windows, Xbox One', 2),
 (7, 'League of Legends', '2009-10-27', 'MOBA', ' Microsoft Windows, macOS', 1),
 (8, 'Valorant', '2020-06-02', 'Videojuego multijugador', 'PlayStation 5, Microsoft Windows, Xbox Series X|S, Android', 1),
 (9, 'Teamfight Tactics', '2019-09-26', 'Videojuego multijugador', 'iOS, Android, macOS, Microsoft Windows, Mac OS', 1),
 (10, 'Overwatch 2', '2022-10-04', 'Videojuego multijugador', 'PlayStation 5, PlayStation 4, Nintendo Switch, Microsoft Windows, Xbox One, Xbox Series X|S, GeForce Now', 3),
-(11, 'Far Cry 6', '2021-10-07', 'Videojuego multijugador', 'PlayStation 5, PlayStation 4, Xbox Series X|S', 2);
+(11, 'Far Cry 6', '2021-10-07', 'Videojuego multijugador', 'PlayStation 5, PlayStation 4, Xbox Series X|S', 2),
+(23, 'tomate4', '2024-10-01', 'multijugador disparos', 'pc ps5 xbox', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `usuario` varchar(200) NOT NULL,
+  `password` char(60) NOT NULL,
+  `rol` char(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `rol`) VALUES
+(1, 'webadmin', '$2y$10$75g0enZ9Wc57xvmKdIGO/epmtKkenxtEduz1ELKPZ6ZvnFzbA8kmq', 'administrador'),
+(2, 'webusuario', '$2y$10$fVFY0IISvYBj30gpB8Pi3evqO/a7VP1BRIz50kZ.hMWvYAOpT.mla', 'usuario');
 
 --
 -- Índices para tablas volcadas
@@ -92,6 +112,12 @@ ALTER TABLE `juegos`
   ADD KEY `id_compania` (`id_compania`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -99,13 +125,19 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `compania`
 --
 ALTER TABLE `compania`
-  MODIFY `id_compania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_compania` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id_juegos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_juegos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
