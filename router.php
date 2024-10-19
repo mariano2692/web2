@@ -28,7 +28,7 @@
             sessionMiddleware($res);
             verifyAuthMiddleware($res);
             $controller = new gamesController($res);
-            $controller->listGame($params[1]);
+            $controller->getGame($params[1]);
             break;
         case 'add':
             sessionMiddleware($res);

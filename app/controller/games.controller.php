@@ -21,7 +21,7 @@ require_once './app/view/games.view.php';
             $this->view->showGames($games);
         }
 
-        public function listGame($id){
+        public function getGame($id){
             $game = $this->model->getGame($id);
             $this->view->showGame($game);
         }

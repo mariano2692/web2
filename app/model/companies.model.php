@@ -1,11 +1,8 @@
 <?php
+require_once 'app/model/model.php';
 
-class companiesModel {
-    private $db;
+class companiesModel extends Model {
 
-    public function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_juegos;charset=utf8', 'root', '');
-    }
 
     public function getCompanies() {
         $query = $this->db->prepare('SELECT * FROM compania');

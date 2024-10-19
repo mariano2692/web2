@@ -10,57 +10,22 @@
 
         public function showGames($games){
             require_once './templates/header.php';
+
+            require_once './templates/list_games.php';
             ?>
-            <div class="container">
-
-                <ul class="list-group">
-                    <?php foreach($games as $game){ ?>
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo "$game->nombre" ?></h5>
-                                <p class="card-text"><?php echo $game->fecha_lanzamiento ?></p>
-                                <a href="game/<?php echo $game->id_juegos ?>" class="btn btn-outline-primary">ver mas</a>
-                                <?php if($this->user && $this->user->rol == "administrador"):?>
-                                <a href="delete/<?php echo $game->id_juegos ?>" class="btn btn-outline-danger">borrar</a>
-                                <a href="update/<?php echo $game->id_juegos ?>" class="btn btn-outline-info">editar</a>
-                                <?php endif ?>
-                            </div>
-                        </div>
-                    <?php  
-                    }
-                    ?>
-
-                </ul>
-            </div>
   <?php
         }
         public function showGame($game){
             require_once './templates/header.php';
+            require_once './templates/game.php';
     ?>
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title"><?php echo $game->nombre; ?></h5>
-        </div>
-        <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Fecha de Lanzamiento:</h6>
-            <p class="card-text"><?php echo $game->fecha_lanzamiento; ?></p>
-
-            <h6 class="card-subtitle mb-2 text-muted">Plataformas:</h6>
-            <p class="card-text"><?php echo $game->plataformas; ?></p>
-
-            <h6 class="card-subtitle mb-2 text-muted">Modalidad:</h6>
-            <p class="card-text"><?php echo $game->modalidad; ?></p>
-        </div>
-    </div>
+   
 <?php
         }
         public function showForm($comp,$game=null){
             if($this->user && $this->user->rol == "administrador"){
                 require_once './templates/header.php';
                 require_once './templates/form_add_games.php';
-            }
-            else{
-                echo "no permitido";
             }
             
         }

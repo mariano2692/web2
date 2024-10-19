@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2024 a las 17:22:38
+-- Tiempo de generación: 19-10-2024 a las 20:42:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -70,8 +70,7 @@ INSERT INTO `juegos` (`id_juegos`, `nombre`, `fecha_lanzamiento`, `modalidad`, `
 (8, 'Valorant', '2020-06-02', 'Videojuego multijugador', 'PlayStation 5, Microsoft Windows, Xbox Series X|S, Android', 1),
 (9, 'Teamfight Tactics', '2019-09-26', 'Videojuego multijugador', 'iOS, Android, macOS, Microsoft Windows, Mac OS', 1),
 (10, 'Overwatch 2', '2022-10-04', 'Videojuego multijugador', 'PlayStation 5, PlayStation 4, Nintendo Switch, Microsoft Windows, Xbox One, Xbox Series X|S, GeForce Now', 3),
-(11, 'Far Cry 6', '2021-10-07', 'Videojuego multijugador', 'PlayStation 5, PlayStation 4, Xbox Series X|S', 2),
-(23, 'tomate4', '2024-10-01', 'multijugador disparos', 'pc ps5 xbox', 1);
+(11, 'Far Cry 6', '2021-10-07', 'Videojuego multijugador', 'PlayStation 5, PlayStation 4, Xbox Series X|S', 2);
 
 -- --------------------------------------------------------
 
@@ -92,7 +91,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `rol`) VALUES
 (1, 'webadmin', '$2y$10$75g0enZ9Wc57xvmKdIGO/epmtKkenxtEduz1ELKPZ6ZvnFzbA8kmq', 'administrador'),
-(2, 'webusuario', '$2y$10$fVFY0IISvYBj30gpB8Pi3evqO/a7VP1BRIz50kZ.hMWvYAOpT.mla', 'usuario');
+(3, 'webusuario', 'usuario', '$2y$10$V5ivsioER/Ins5zneeW7Te4OBYPqCmeZQyAabbdvQPb3G6aN6jPbu');
 
 --
 -- Índices para tablas volcadas
@@ -137,7 +136,7 @@ ALTER TABLE `juegos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

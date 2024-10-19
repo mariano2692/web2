@@ -1,11 +1,10 @@
 <?php
 
-    class gamesModel {
-        private $db;
-        public function __construct(){
-            $this->db = new PDO('mysql:host=localhost;'.'dbname=db_juegos;charset=utf8', 'root', '');
-        }
+require_once 'app/model/model.php';
 
+
+    class gamesModel extends Model {
+   
         public function getGames(){
             $query = $this->db->prepare('SELECT * FROM juegos');
             $query->execute();

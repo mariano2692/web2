@@ -1,11 +1,10 @@
 <?php
-class userModel{
 
-    private $db;
+require_once 'app/model/model.php';
 
-    public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=db_juegos;charset=utf8', 'root', '');
-    }
+class userModel extends Model{
+
+
 
     public function getUser($userdb){
         $query = $this->db->prepare("SELECT * FROM usuario WHERE usuario = ?");
