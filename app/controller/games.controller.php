@@ -13,7 +13,7 @@ require_once './app/view/games.view.php';
 
         public function showFormAddGames(){
             $comp = $this->model->getCompanies();
-            $this->view->showForm($comp);
+            $this->view->showFormAdd($comp);
         }
 
         public function listGames(){
@@ -64,10 +64,10 @@ require_once './app/view/games.view.php';
            
         }
 
-        public function getData($id){
+        public function showFormEditGames($id){
             $game = $this->model->getGame($id);
             $comp = $this->model->getCompanies();
-            $this->view->showForm($comp,$game); //le pasa el juego a modificar y la lista de companias
+            $this->view->showFormEdit($comp,$game); //le pasa el juego a modificar y la lista de companias
             
         }
     }

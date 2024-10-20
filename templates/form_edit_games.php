@@ -18,10 +18,11 @@ require_once 'templates/header.php';
 
     <form action="add" method="POST" class="my-4">
         <div class="row">
+                    <input required name="id" type="number" class="form-control" hidden value="<?php echo isset($game->id_juegos) ? $game->id_juegos : 0; ?>">
             <div class="col-9">
                 <div class="form-group">
                     <label>Título</label>
-                    <input required name="nombre" type="text" class="form-control">
+                    <input required name="nombre" type="text" class="form-control" value="<?php echo isset($game->nombre) ? $game->nombre : ''; ?>">
                 </div>
             </div>
             <div class="col-9">
@@ -33,13 +34,13 @@ require_once 'templates/header.php';
             <div class="col-9">
                 <div class="form-group">
                     <label>modalidad</label>
-                    <input required name="modalidad" type="text" class="form-control">
+                    <input required name="modalidad" type="text" class="form-control" value="<?php echo isset($game->modalidad) ? $game->modalidad : ''; ?>">
                 </div>
             </div>
             <div class="col-9">
                 <div class="form-group">
                     <label>plataformas</label>
-                    <input required name="plataforma" type="text" class="form-control">
+                    <input required name="plataforma" type="text" class="form-control" value="<?php echo isset($game->plataformas) ? $game->plataformas : ''; ?>">
                 </div>
             </div>
 

@@ -20,11 +20,15 @@
    
 <?php
         }
-        public function showForm($comp,$game=null){
+        public function showFormAdd($comp){
             if(isset($_SESSION['user']) && $_SESSION['rol'] == 'administrador'){
                 require_once './templates/form_add_games.php';
             }
-            
+        }
+        public function showFormEdit($comp,$game){
+            if(isset($_SESSION['user']) && $_SESSION['rol'] == 'administrador'){
+                require_once './templates/form_edit_games.php';
+            }
         }
 
 

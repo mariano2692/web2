@@ -45,7 +45,7 @@
         case 'update':
             $authController->verifySession();
             $controller = new gamesController();
-            $controller->getData($params[1]);
+            $controller->showFormEditGames($params[1]);
             break;
         case 'login':
             $controller = new authController();
