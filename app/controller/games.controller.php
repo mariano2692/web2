@@ -6,12 +6,12 @@ require_once './app/view/games.view.php';
         private $model;
         private $view;
 
-        public function __construct($res){
+        public function __construct(){
             $this->model = new gamesModel();
-            $this->view = new gamesView($res->user);
+            $this->view = new gamesView();
         }
 
-        public function listCompanies(){
+        public function showFormAddGames(){
             $comp = $this->model->getCompanies();
             $this->view->showForm($comp);
         }

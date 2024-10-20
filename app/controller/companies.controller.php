@@ -6,9 +6,9 @@ class companiesController {
     private $model;
     private $view;
 
-    public function __construct($res) {
+    public function __construct() {
         $this->model = new companiesModel();
-        $this->view = new companiesView($res->user);
+        $this->view = new companiesView();
     }
 
     public function listCompanies() {

@@ -1,3 +1,7 @@
+<?php
+require_once 'templates/header.php';
+?>
+
 <div class="card">
         <div class="card-header">
             <h5 class="card-title"><?php echo $game->nombre; ?></h5>
@@ -13,3 +17,7 @@
             <p class="card-text"><?php echo $game->modalidad; ?></p>
         </div>
     </div>
+
+<?php
+require_once 'templates/footer.php';
+?>

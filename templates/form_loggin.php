@@ -2,11 +2,13 @@
 require_once 'templates/header.php';
 ?>
 
-<?php if($error):?>
-<div class='alert alert-danger' role='alert'>
-    <?php $error ?>
-</div> 
-<?php endif ?>
+<div class="mt-5 w-25 mx-auto">
+    <!-- mensaje de error (si existe) -->
+    <?php if ($error): ?>
+        <div class='alert alert-danger' role='alert'>
+            <?= $error ?>
+        </div>
+    <?php endif ?>
 
 <form method='post' action='login'>
     <div class='form-group'>
@@ -19,3 +21,9 @@ require_once 'templates/header.php';
     </div>
     <button type='submit' class='btn btn-primary'>Login</button>
 </form>
+
+</div>
+
+<?php
+require_once 'templates/footer.php';
+?>

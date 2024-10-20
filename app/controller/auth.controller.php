@@ -10,19 +10,28 @@ class authController{
     {
         $this->model = new userModel();
         $this->view = new authView();
+        $this->sessionStart();
     }
+
+    public function sessionStart(){  //iniciar una sesión en el servidor
+        if (session_status() != PHP_SESSION_ACTIVE) { //pregunta si hay una sesion iniciada
+            session_start(); //inicia una nueva sesion
+        }
+    } 
+
 
     public function showLogin(){
         $this->view->showFormLogin();
     }
 
     public function login(){
+        //verificar si se llenaron los campos del formulario
         if (!isset($_POST['usuario']) || empty($_POST['usuario'])) {
-            $this->view->showFormLogin("error");
+            $this->view->showFormLogin("completar el nombre usuario");
             return;
         }
         if (!isset($_POST['password']) || empty($_POST['password'])) {
-            $this->view->showFormLogin("error");
+            $this->view->showFormLogin("introducir una contraseña");
             return;
         }
 
@@ -31,8 +40,8 @@ class authController{
 
         $userDB = $this->model->getUser($user);
 
-        if(password_verify($password, $userDB->password)){
-            session_start();
+        if($userDB && password_verify($password, $userDB->password)){
+            // session_start();
             $_SESSION['id_user'] = $userDB->id_usuario;
             $_SESSION['user'] = $userDB->usuario;
             $_SESSION['password'] = $userDB->password;
@@ -41,14 +50,27 @@ class authController{
             header('Location: ' . BASE_URL);
         }
         else{
+            session_destroy();
+            session_start();
             return $this->view->showFormLogin("usuario o contraseña incorrecta");
         }
     }
 
-    public function logout() {
-        session_start(); // Va a buscar la cookie
-        session_destroy(); // Borra la cookie que se buscó
+    public function logout() { //cerrar sesion
+        $this->verifySession(); 
+        session_destroy(); 
         header('Location: ' . BASE_URL);
+    }
+
+    public function session(){ //si retorna true esta logeado
+        return isset($_SESSION['user']); 
+    }
+
+    public function verifySession(){ //pregunta si existe una sesion, si un usuario esta logedo
+        if(!$this->session()){
+            header('Location: ' . BASE_URL . 'showLogin');
+            die();
+        }
     }
 
 }

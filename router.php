@@ -1,51 +1,50 @@
 <?php
-    require_once 'app/utils/response.php';
-    require_once 'app/middlewares/session.middleware.php';
-    require_once 'app/middlewares/verify.middleware.php';
+
     require_once 'app/controller/games.controller.php';
     require_once 'app/controller/auth.controller.php';
 
     require_once 'app/controller/companies.controller.php';
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-    $res = new Response();
 
     $action= 'list';
     if(!empty($_GET['action'])){
         $action = $_GET['action'];
     }
 
+    $authController = new authController();
+
     $params = explode('/',$action);
 
     switch($params[0]){
+        case 'showFormAdd':
+            $authController->verifySession();
+            $controller = new gamesController();
+            $controller->showFormAddGames();
+            break;
         case 'list':
-            sessionMiddleware($res);
-            $controller = new gamesController($res);
+            $authController->verifySession();
+            $controller = new gamesController();
             $controller->listGames();
-            $controller->listCompanies();
             break;
         case 'game':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new gamesController($res);
+            $authController->verifySession();
+            $controller = new gamesController();
             $controller->getGame($params[1]);
             break;
         case 'add':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new gamesController($res);
+            $authController->verifySession();
+            $controller = new gamesController();
             $controller->addGame();
             break;
         case 'delete':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new gamesController($res);
+            $authController->verifySession();
+            $controller = new gamesController();
             $controller->deleteGame($params[1]);
             break;
         case 'update':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new gamesController($res);
+            $authController->verifySession();
+            $controller = new gamesController();
             $controller->getData($params[1]);
             break;
         case 'login':
@@ -57,31 +56,27 @@
             $controller->showLogin();
             break;
         case 'logout':
-             $controller = new authController();
+            $controller = new authController();
             $controller->logout();
             break;
         case 'listCompanies':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new companiesController($res);
+            $authController->verifySession();
+            $controller = new companiesController();
             $controller->listCompanies();
             break;
         case 'addCompany':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new companiesController($res);
+            $authController->verifySession();
+            $controller = new companiesController();
             $controller->addCompany();
             break;
             case 'deleteCompany':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new companiesController($res);
+            $authController->verifySession();
+            $controller = new companiesController();
             $controller->deleteCompany($params[1]);
             break;
         case 'editCompany':
-            sessionMiddleware($res);
-            verifyAuthMiddleware($res);
-            $controller = new companiesController($res);
+            $authController->verifySession();
+            $controller = new companiesController();
             $controller->editCompany();
             break;
         default:

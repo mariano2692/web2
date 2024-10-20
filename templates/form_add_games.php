@@ -1,3 +1,6 @@
+<?php
+require_once 'templates/header.php';
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -60,3 +63,7 @@
 
     </form>
 </div>
+
+<?php
+require_once 'templates/footer.php';
+?>

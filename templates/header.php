@@ -12,12 +12,13 @@
 
 <header>
         <nav class="navbar navbar-expand-lg bg-light">
+          
             <div class="container-fluid">
               <a class="navbar-brand" href="">Juegos</a>
-              <?php if($this->user):?>
-                <span class="navbar-text"><?php echo $this->user->user ?></span>
-              <?php endif?>
               
+              <?php if(isset($_SESSION['user'])):?>
+                    <span class="navbar-text"><?= $_SESSION['user'] ?></span>
+                <?php endif; ?>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -29,7 +30,10 @@
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="listCompanies">listado de companias</a>
                   </li>
-                  <?php if($this->user): ?>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="showFormAdd">agregar un juego</a>
+                  </li>
+                  <?php if(isset($_SESSION['user'])): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="logout">logout</a>
                             </li>
