@@ -1,8 +1,5 @@
 <?php
-const MYSQL_USER = 'root';
-const MYSQL_PASS = '';
-const MYSQL_DB = 'db_juegos';
-const MYSQL_HOST = 'localhost';
+    require_once './config.php';
 
     class Model {
         protected $db;
@@ -10,7 +7,7 @@ const MYSQL_HOST = 'localhost';
         function __construct() {
             $this->db = $this->getConnection();
             $this->deploy();
-        } //__construct
+        }
 
 
         private function getConnection() {

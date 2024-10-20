@@ -14,7 +14,6 @@
   <?php
         }
         public function showGame($game){
-            require_once './templates/header.php';
             require_once './templates/game.php';
     ?>
    
