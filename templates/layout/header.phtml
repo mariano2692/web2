@@ -37,7 +37,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="logout">logout</a>
                             </li>
-                        <?php endif; ?>
+                  <?php endif; ?>
+                  <?php if(!isset($_SESSION['user'])): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="showLogin">login</a>
+                            </li>
+                  <?php endif; ?>
 
                 </ul>
               </div>

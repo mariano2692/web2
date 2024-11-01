@@ -28,7 +28,7 @@
             $controller->listGames();
             break;
         case 'game':
-            $authController->verifySession();
+            // $authController->verifySession();
             $controller = new gamesController();
             $controller->getGame($params[1]);
             break;
