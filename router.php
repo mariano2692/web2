@@ -23,7 +23,7 @@
             $controller->showFormAddGames();
             break;
         case 'list':
-            $authController->verifySession();
+            // $authController->verifySession();
             $controller = new gamesController();
             $controller->listGames();
             break;
@@ -60,7 +60,7 @@
             $controller->logout();
             break;
         case 'listCompanies':
-            $authController->verifySession();
+            // $authController->verifySession();
             $controller = new companiesController();
             $controller->listCompanies();
             break;

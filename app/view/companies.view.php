@@ -8,7 +8,7 @@ class companiesView {
     {
     }
     public function showCompanies($companias) {
-        require_once './templates/header.php';
+        require_once './templates/layout/header.phtml';
         ?>
         <h1>Gestión de Compañías</h1>
         <?php if(isset($_SESSION['user']) && $_SESSION['rol'] == 'administrador'): ?>
